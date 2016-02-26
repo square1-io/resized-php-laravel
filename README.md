@@ -21,7 +21,7 @@ Find the `providers` key in your `config/app.php` and register the Resized Servi
     )
 ```
 
-Find the `aliases` key in your `config/app.php` and add the AWS facade alias.
+Find the `aliases` key in your `config/app.php` and add the Resized facade alias.
 
 ```php
     'aliases' => array(
@@ -37,7 +37,7 @@ By default, the package uses the following environment variables to auto-configu
 ```
 RESIZED_KEY
 RESIZED_SECRET
-RESIZED_DEFAULT
+RESIZED_DEFAULT_IMAGE
 ```
 
 ## Usage
