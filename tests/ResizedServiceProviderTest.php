@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 namespace Square1\Laravel\Resized\Test;
 
@@ -68,10 +68,11 @@ abstract class ResizedServiceProviderTest extends \PHPUnit_Framework_TestCase
         $this->setupServiceProvider($app);
         Resized::setFacadeApplication($app);
 
-        $this->setExpectedException(\InvalidArgumentException::class, 'Invalid URL');
         Resized::setHost('https://img.resized.co');
         Resized::setDefaultImage('http://www.example.com/no-image.jpg');
         $img = Resized::process('', '100', '100', 'A nice title');
+
+        $this->assertEquals($img, 'https://img.resized.co/key/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmV4YW1wbGUuY29tXFxcL25vLWltYWdlLmpwZ1wiLFwid2lkdGhcIjpcIjEwMFwiLFwiaGVpZ2h0XCI6XCIxMDBcIixcImRlZmF1bHRcIjpcImh0dHA6XFxcL1xcXC93d3cuZXhhbXBsZS5jb21cXFwvbm8taW1hZ2UuanBnXCJ9IiwiaGFzaCI6ImVmYWMxMDg0YjM5ZjE3MDk3ZjYyOTU2MmQ0Y2Y2YmI3MDZkM2EyODQifQ==/a-nice-title.jpg');
     }
 
     public function testInvalidURL()
@@ -80,10 +81,11 @@ abstract class ResizedServiceProviderTest extends \PHPUnit_Framework_TestCase
         $this->setupServiceProvider($app);
         Resized::setFacadeApplication($app);
 
-        $this->setExpectedException(\InvalidArgumentException::class, 'Invalid URL');
         Resized::setHost('https://img.resized.co');
         Resized::setDefaultImage('http://www.example.com/no-image.jpg');
         $img = Resized::process('http:/www.example.com/some-image-to-resize.jpg', '100', '100', 'A nice title');
+
+        $this->assertEquals($img, 'https://img.resized.co/key/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmV4YW1wbGUuY29tXFxcL25vLWltYWdlLmpwZ1wiLFwid2lkdGhcIjpcIjEwMFwiLFwiaGVpZ2h0XCI6XCIxMDBcIixcImRlZmF1bHRcIjpcImh0dHA6XFxcL1xcXC93d3cuZXhhbXBsZS5jb21cXFwvbm8taW1hZ2UuanBnXCJ9IiwiaGFzaCI6ImVmYWMxMDg0YjM5ZjE3MDk3ZjYyOTU2MmQ0Y2Y2YmI3MDZkM2EyODQifQ==/a-nice-title.jpg');
     }
 
     public function testWithTitle()
