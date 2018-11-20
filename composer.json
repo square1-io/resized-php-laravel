@@ -42,6 +42,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Square1\\Laravel\\Resized\\ResizedServiceProvider"
+            ],
+            "aliases": {
+                "Resized": "Square1\\Laravel\\Resized\\ResizedFacade"
+            }
         }
     }
 }
