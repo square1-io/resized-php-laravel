@@ -30,7 +30,7 @@ class ResizedServiceProvider extends ServiceProvider
             $resizer = new Resized(config('resized.key'), config('resized.secret'));
             $resizer->setHost(config('resized.host'));
             $resizer->setDefaultImage(config('resized.default'));
-
+            $resizer->setDefaultOptions(config('resized.options'));
             return $resizer;
         });
     }
