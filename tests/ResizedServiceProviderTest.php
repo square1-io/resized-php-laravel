@@ -5,8 +5,9 @@ namespace Square1\Laravel\Resized\Test;
 use Illuminate\Container\Container;
 use Square1\Laravel\Resized\ResizedServiceProvider;
 use Square1\Laravel\Resized\ResizedFacade as Resized;
+use Orchestra\Testbench\TestCase;
 
-abstract class ResizedServiceProviderTest extends \PHPUnit_Framework_TestCase
+abstract class ResizedServiceProviderTest extends TestCase
 {
     public function testRegisterResizedServiceProvider()
     {
@@ -35,7 +36,7 @@ abstract class ResizedServiceProviderTest extends \PHPUnit_Framework_TestCase
         $this->setupServiceProvider($app);
         Resized::setFacadeApplication($app);
 
-        $this->setExpectedException(\InvalidArgumentException::class, 'Invalid Default Image URL');
+        $this->expectException(\InvalidArgumentException::class, 'Invalid Default Image URL');
         Resized::setDefaultImage('http:/www.example.com/no-image.jpg');
     }
 
@@ -45,7 +46,7 @@ abstract class ResizedServiceProviderTest extends \PHPUnit_Framework_TestCase
         $this->setupServiceProvider($app);
         Resized::setFacadeApplication($app);
 
-        $this->setExpectedException('InvalidArgumentException', 'Invalid Host URL');
+        $this->expectException('InvalidArgumentException', 'Invalid Host URL');
         Resized::setHost('https:/img.resized.co');
     }
 
