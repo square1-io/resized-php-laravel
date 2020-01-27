@@ -78,6 +78,13 @@ Override image slug.
     $url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '300', '500', 'A nice image name');
 ```
 
+Specify the compression level through the options array.
+>Data ranging from 0 (poor quality, small file) to 100 (best quality, big file). Quality is only applied if you're encoding JPG format since PNG compression is lossless and does not affect image quality. Default: 90.
+
+``` php
+    $url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '', '500', 'A nice image name', ['quality' => 100]);
+```
+
 ## Testing
 
 ``` bash

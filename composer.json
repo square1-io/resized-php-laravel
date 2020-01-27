@@ -17,11 +17,11 @@
         }
     ],
     "require": {
-        "php" : "~5.5|~7.0",
-        "square1/resized": "~1.0.2"
+        "php" : "~7.1|~7.2",
+        "square1/resized": "~1.1.0",
+        "orchestra/testbench": "^3.7"
     },
     "require-dev": {
-        "phpunit/phpunit": "~4.0",
         "laravel/framework": "~5.2",
         "scrutinizer/ocular": "~1.1",
         "squizlabs/php_codesniffer": "~2.3"
@@ -42,6 +42,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Square1\\Laravel\\Resized\\ResizedServiceProvider"
+            ],
+            "aliases": {
+                "Resized": "Square1\\Laravel\\Resized\\ResizedFacade"
+            }
         }
     }
 }
