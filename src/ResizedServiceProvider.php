@@ -2,6 +2,7 @@
 
 namespace Square1\Laravel\Resized;
 
+use Log;
 use Square1\Resized\Resized;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,10 +29,14 @@ class ResizedServiceProvider extends ServiceProvider
 
         $this->mergeConfigFrom($source, 'resized');
 
+        if (empty(config('resized.key')) || empty(config('resized.secret'))) {
+            Log::debug('Resizer not bound - key and secret config values required.');
+            return;
+        }
+
         if (config('environment') == 'local') {
             $resizer = new LocalResized(config('resized.key'), config('resized.secret'));
         } else {
-            // dd(config('resized'));
             $resizer = new Resized(config('resized.key'), config('resized.secret'));
         }
 

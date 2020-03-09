@@ -1,6 +1,6 @@
 {
     "name": "square1/resized-laravel",
-    "description": "Laravel 5 package for resized.co, the on-demand image manipulation service.",
+    "description": "Laravel package for resized.co, the on-demand image manipulation service.",
     "keywords": [
         "square1",
         "resized",
@@ -17,14 +17,13 @@
         }
     ],
     "require": {
-        "php" : "~7.1|~7.2",
-        "square1/resized": "~1.1.0",
-        "orchestra/testbench": "^3.7"
+        "php" : "~7.2|~7.4",
+        "square1/resized": "~1.1.0"
     },
     "require-dev": {
-        "laravel/framework": "~5.2",
-        "scrutinizer/ocular": "~1.1",
-        "squizlabs/php_codesniffer": "~2.3"
+        "laravel/framework": "~7.0",
+        "squizlabs/php_codesniffer": "~2.3",
+        "orchestra/testbench": "5.0"
     },
     "autoload": {
         "psr-4": {

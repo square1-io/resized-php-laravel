@@ -7,7 +7,7 @@ use Illuminate\Foundation\Application;
 
 class LaravelResizedServiceProviderTest extends ResizedServiceProviderTest
 {
-    public function setUp()
+    public function setUp() : void
     {
         if (!class_exists(Application::class)) {
             $this->markTestSkipped();
