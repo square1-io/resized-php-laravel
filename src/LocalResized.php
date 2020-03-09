@@ -6,6 +6,41 @@ use Square1\Resized\Resized;
 
 class LocalResized extends Resized
 {
+    private $enabled = true;
+
+    /**
+     * Constructor
+     *
+     * @param string $key
+     * @param string $secret
+     */
+    public function __construct($key, $secret)
+    {
+        $this->key = $key;
+        $this->secret = $secret;
+    }
+
+
+    /**
+     * Determine whether this service is "enabled".
+     * If not, no attempt at remote url generation will be made.
+     * This prevents applications crashing when .env keys are not set
+     * on installation.
+     *
+     * @param bool $enabled
+     */
+    public function setEnabled(bool $enabled)
+    {
+        $this->enabled = $enabled;
+    }
+
+
+    public function isEnabled() : bool
+    {
+        return $this->enabled;
+    }
+
+
     /**
     * Process image
     *
@@ -17,9 +52,9 @@ class LocalResized extends Resized
     *
     * @param string
     */
-    public function process($url, $width = '', $height = '', $title = '', $options = [])
+    public function process($url, $width = '', $height = '', $title = '', $options = []) : string
     {
-        if (! $this->isFullUlr($url)) {
+        if (!$this->isFullUrl($url) || !$this->isEnabled()) {
             return $url;
         }
 
@@ -32,7 +67,7 @@ class LocalResized extends Resized
      * @param string $url
      * @return boolean
      */
-    protected function isFullUlr($url)
+    protected function isFullUrl($url) : bool
     {
         $path = parse_url($url);
         return (empty($path['schema']) || empty($path['host']));
