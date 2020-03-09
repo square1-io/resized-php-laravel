@@ -52,7 +52,7 @@ class LocalResized extends Resized
     *
     * @param string
     */
-    public function process($url, $width = '', $height = '', $title = '', $options = []) : string
+    public function process($url, $width = '', $height = '', $title = '', $options = [])
     {
         if (!$this->isFullUrl($url) || !$this->isEnabled()) {
             return $url;
