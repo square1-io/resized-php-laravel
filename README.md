@@ -16,6 +16,11 @@ Via Composer
 $ composer require square1/resized-laravel
 ```
 
+Version 2 removed support for PHP7.1 - if you require it, run
+``` bash
+$ composer require square1/resized-laravel:1.1
+```
+
 To use the Resized Service Provider, you must register the provider when bootstrapping your Laravel application.
 
 Find the `providers` key in your `config/app.php` and register the Resized Service Provider.
