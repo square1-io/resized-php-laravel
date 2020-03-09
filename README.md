@@ -6,7 +6,7 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
-This is the Laravel 5 package for resized.co, an on-demand image resize manipulation service.
+This is the Laravel package for resized.co, an on-demand image resize manipulation service.
 
 ## Install
 
