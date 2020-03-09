@@ -24,10 +24,4 @@
         <env name="RESIZED_KEY" value="key"/>
         <env name="RESIZED_SECRET" value="secret-d0be2dc421be4fcd0172e5afceea3970e2f3d940"/>
     </php>
-    <logging>
-        <log type="tap" target="build/report.tap"/>
-        <log type="junit" target="build/report.junit.xml"/>
-        <log type="coverage-text" target="build/coverage.txt"/>
-        <log type="coverage-clover" target="build/logs/clover.xml"/>
-    </logging>
 </phpunit>
