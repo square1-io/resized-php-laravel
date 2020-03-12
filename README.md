@@ -6,7 +6,7 @@
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
-This is the Laravel 5 package for resized.co, an on-demand image resize manipulation service.
+This is the Laravel package for resized.co, an on-demand image resize manipulation service.
 
 ## Install
 
@@ -14,6 +14,11 @@ Via Composer
 
 ``` bash
 $ composer require square1/resized-laravel
+```
+
+Version 2 removed support for PHP7.1 - if you require it, run
+``` bash
+$ composer require square1/resized-laravel:1.1
 ```
 
 To use the Resized Service Provider, you must register the provider when bootstrapping your Laravel application.
