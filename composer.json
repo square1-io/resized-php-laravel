@@ -18,7 +18,7 @@
     ],
     "require": {
         "php" : "~7.2|~7.4",
-        "square1/resized": "~1.1.0"
+        "square1/resized": "~1.2.0"
     },
     "require-dev": {
         "laravel/framework": "~7.0",
