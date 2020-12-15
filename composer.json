@@ -17,13 +17,13 @@
         }
     ],
     "require": {
-        "php" : "~7.2|~7.4",
+        "php": "7.*|^8.0",
         "square1/resized": "~1.2.0"
     },
     "require-dev": {
-        "laravel/framework": "~7.0",
+        "laravel/framework": "^8.12",
         "squizlabs/php_codesniffer": "~2.3",
-        "orchestra/testbench": "5.0"
+        "orchestra/testbench": "^6.6"
     },
     "autoload": {
         "psr-4": {
