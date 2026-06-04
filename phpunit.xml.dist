@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="vendor/autoload.php" backupGlobals="false" backupStaticAttributes="false" colors="true" verbose="true" convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true" processIsolation="false" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
-  <coverage>
-    <include>
-      <directory suffix=".php">src/</directory>
-    </include>
-  </coverage>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="vendor/autoload.php" colors="true" processIsolation="false" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/13.1/phpunit.xsd">
   <testsuites>
     <testsuite name="Square1 Test Suite">
       <directory>tests</directory>
+      <exclude>tests/ResizedServiceProviderTest.php</exclude>
     </testsuite>
   </testsuites>
   <php>
@@ -15,4 +11,9 @@
     <env name="RESIZED_KEY" value="key"/>
     <env name="RESIZED_SECRET" value="secret-d0be2dc421be4fcd0172e5afceea3970e2f3d940"/>
   </php>
+  <source>
+    <include>
+      <directory suffix=".php">src/</directory>
+    </include>
+  </source>
 </phpunit>

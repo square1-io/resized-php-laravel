@@ -7,16 +7,16 @@ use Illuminate\Foundation\Application;
 
 class LaravelResizedServiceProviderTest extends ResizedServiceProviderTest
 {
-    public function setUp() : void
+    public function setUp(): void
     {
-        if (!class_exists(Application::class)) {
+        if (! class_exists(Application::class)) {
             $this->markTestSkipped();
         }
 
         parent::setUp();
     }
 
-    protected function setupApplication()
+    protected function setupApplication(): Application
     {
         // Create the application such that the config is loaded.
         $app = new Application();

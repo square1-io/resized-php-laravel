@@ -2,11 +2,12 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status][ico-travis]][link-travis]
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
 This is the Laravel package for resized.co, an on-demand image resize manipulation service.
+
+Requires PHP 8.2 and Laravel 10 or higher.
 
 ## Install
 
@@ -16,12 +17,9 @@ Via Composer
 $ composer require square1/resized-laravel
 ```
 
-Version 2 removed support for PHP7.1 - if you require it, run
-``` bash
-$ composer require square1/resized-laravel:1.1
-```
+The package supports auto-discovery. The service provider and facade are registered automatically.
 
-To use the Resized Service Provider, you must register the provider when bootstrapping your Laravel application.
+To manually register the service provider in your `config/app.php`:
 
 Find the `providers` key in your `config/app.php` and register the Resized Service Provider.
 
@@ -102,9 +100,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/square1/resized-laravel.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/square1-io/resized-php-laravel/master.svg?style=flat-square
 [ico-downloads]: https://img.shields.io/packagist/dt/square1/resized-laravel.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/square1/resized-laravel
-[link-travis]: https://travis-ci.org/square1-io/resized-php-laravel
 [link-downloads]: https://packagist.org/packages/square1/resized-laravel
