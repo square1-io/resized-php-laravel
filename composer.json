@@ -14,16 +14,21 @@
         {
             "name": "Ciaran Maher",
             "email": "ciaran@square1.io"
+        },
+        {
+            "name": "Jose Vicente Orts",
+            "email": "vince@square1.io"
         }
     ],
     "require": {
-        "php": "~7.4|~8.0",
-        "square1/resized": "~1.3.0"
+        "php": "^8.2",
+        "square1/resized": "^1.3|^2.0",
+        "ext-iconv": "*"
     },
     "require-dev": {
-        "laravel/framework": "^8.12",
-        "squizlabs/php_codesniffer": "~2.3",
-        "orchestra/testbench": "^6.6"
+        "laravel/framework": "^12.0|^13.0",
+        "orchestra/testbench": "^10.0|^11.0",
+        "friendsofphp/php-cs-fixer": "^3.0"
     },
     "autoload": {
         "psr-4": {
@@ -36,11 +41,13 @@
         }
     },
     "scripts": {
-        "test": "phpunit"
+        "test": "phpunit",
+        "format": "php-cs-fixer fix --allow-risky=yes",
+        "format:check": "php-cs-fixer check --allow-risky=yes"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "1.0-dev"
+            "dev-master": "3.0-dev"
         },
         "laravel": {
             "providers": [

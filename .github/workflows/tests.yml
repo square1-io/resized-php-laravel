@@ -1,0 +1,74 @@
+name: Tests
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+  cs:
+    runs-on: ubuntu-latest
+    name: Code Style
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Check code style
+        run: ./vendor/bin/php-cs-fixer check --allow-risky=yes
+
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '8.2'
+            laravel: '^12.0'
+            testbench: '^10.0'
+          - php: '8.3'
+            laravel: '^12.0'
+            testbench: '^10.0'
+          - php: '8.4'
+            laravel: '^12.0'
+            testbench: '^10.0'
+          - php: '8.3'
+            laravel: '^13.0'
+            testbench: '^11.0'
+          - php: '8.4'
+            laravel: '^13.0'
+            testbench: '^11.0'
+
+    name: PHP ${{ matrix.php }} / Laravel ${{ matrix.laravel }}
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+
+      - name: Require Laravel and Testbench versions
+        run: |
+          composer require --dev \
+            "laravel/framework:${{ matrix.laravel }}" \
+            "orchestra/testbench:${{ matrix.testbench }}" \
+            --no-interaction --no-update
+
+      - name: Install dependencies
+        run: composer update --prefer-stable --no-interaction --prefer-dist
+
+      - name: Run tests
+        run: ./vendor/bin/phpunit
