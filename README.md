@@ -49,43 +49,68 @@ RESIZED_SECRET
 RESIZED_DEFAULT_IMAGE
 ```
 
+You can also publish the config file to set default processing options applied to every `process()` call:
+
+```php
+'options' => [
+    'quality' => 90,
+],
+```
+
+When `RESIZED_KEY` or `RESIZED_SECRET` are not set, the service falls back to a local pass-through mode that returns URLs unchanged, so your application does not crash in environments without credentials configured.
+
+On a `local` environment (detected via the `environment` config key), the package always uses pass-through mode regardless of credentials, returning relative and absolute URLs unchanged.
+
 ## Usage
 
 Set the default failover image.
 
-``` php
-	Resized::setDefaultImage('http://www.example.com/no-image.jpg');
+```php
+Resized::setDefaultImage('http://www.example.com/no-image.jpg');
 ```
 
 Generate a 300x500 resized image URL.
 
-``` php
-    $url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '300', '500');
+```php
+$url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '300', '500');
 ```
 
-Generate an image URL that is contrained to 300 width whilst mantaining aspect ratio.
+Generate an image URL constrained to 300 width whilst maintaining aspect ratio.
 
-``` php
-    $url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '300', '');
+```php
+$url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '300');
 ```
 
-Generate an image URL that is contrained to 500 height whilst mantaining aspect ratio.
+Generate an image URL constrained to 500 height whilst maintaining aspect ratio.
 
-``` php
-    $url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '', '500');
+```php
+$url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '', '500');
 ```
 
-Override image slug.
+Override the image slug used in the generated URL.
 
-``` php
-    $url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '300', '500', 'A nice image name');
+```php
+$url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '300', '500', 'A nice image name');
 ```
 
-Specify the compression level through the options array.
->Data ranging from 0 (poor quality, small file) to 100 (best quality, big file). Quality is only applied if you're encoding JPG format since PNG compression is lossless and does not affect image quality. Default: 90.
+Specify the compression level through the options array. Quality ranges from 0 (poor quality, small file) to 100 (best quality, large file). Only applies to JPG encoding. Default: 90.
 
-``` php
-    $url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '', '500', 'A nice image name', ['quality' => 100]);
+```php
+$url = Resized::process('http://www.example.com/some-image-to-resize.jpg', '', '500', 'A nice image name', ['quality' => 100]);
+```
+
+Limit the maximum character length of the filename slug appended to the generated URL.
+
+```php
+Resized::setMaxSlugLength(50);
+$url = Resized::process('http://www.example.com/some-very-long-image-filename.jpg', '300', '500');
+```
+
+Relative URLs and non-HTTP URLs are returned unchanged without making a request to the resized.co service.
+
+```php
+$url = Resized::process('/uploads/image.jpg', '300', '500');
+// Returns '/uploads/image.jpg' unmodified
 ```
 
 ## Testing

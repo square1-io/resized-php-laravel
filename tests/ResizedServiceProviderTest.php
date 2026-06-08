@@ -145,7 +145,7 @@ abstract class ResizedServiceProviderTest extends TestCase
         Resized::setDefaultImage('http://www.example.com/no-image.jpg');
         $img = Resized::process('http://www.example.com/some-image-to-resize.jpg', '100');
 
-        $this->assertEquals('https://img.resized.co/key/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmV4YW1wbGUuY29tXFxcL3NvbWUtaW1hZ2UtdG8tcmVzaXplLmpwZ1wiLFwid2lkdGhcIjpcIjEwMFwiLFwiaGVpZ2h0XCI6XCJcIixcImRlZmF1bHRcIjpcImh0dHA6XFxcL1xcXC93d3cuZXhhbXBsZS5jb21cXFwvbm8taW1hZ2UuanBnXCIsXCJvcHRpb25zXCI6W119IiwiaGFzaCI6IjM2YjEzNjljNmIyM2RhZmM4Y2VkZTQ1MTJiYzk5NTdlYWRjMDc1ZWMifQ==/some-image-to-resize.jpg', $img);
+        $this->assertEquals('https://img.resized.co/key/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmV4YW1wbGUuY29tXFxcL3NvbWUtaW1hZ2UtdG8tcmVzaXplLmpwZ1wiLFwid2lkdGhcIjpcIjEwMFwiLFwiaGVpZ2h0XCI6bnVsbCxcImRlZmF1bHRcIjpcImh0dHA6XFxcL1xcXC93d3cuZXhhbXBsZS5jb21cXFwvbm8taW1hZ2UuanBnXCIsXCJvcHRpb25zXCI6W119IiwiaGFzaCI6ImZlNjY3MjEyNGE1M2Y4MWVkY2JhNzA3OTk5MjFlMDYxN2QxYWVlZTQifQ==/some-image-to-resize.jpg', $img);
     }
 
     /**
@@ -177,7 +177,7 @@ abstract class ResizedServiceProviderTest extends TestCase
         Resized::setDefaultImage('http://www.example.com/no-image.jpg');
         $img = Resized::process('http://www.example.com/some-image-to-resize.jpg');
 
-        $this->assertEquals('https://img.resized.co/key/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmV4YW1wbGUuY29tXFxcL3NvbWUtaW1hZ2UtdG8tcmVzaXplLmpwZ1wiLFwid2lkdGhcIjpcIlwiLFwiaGVpZ2h0XCI6XCJcIixcImRlZmF1bHRcIjpcImh0dHA6XFxcL1xcXC93d3cuZXhhbXBsZS5jb21cXFwvbm8taW1hZ2UuanBnXCIsXCJvcHRpb25zXCI6W119IiwiaGFzaCI6IjMzMGZhODdhOWFmNGJmNTZiOWI2ODQ5NjAxNTZmMmYwNWRiY2Y0ZTUifQ==/some-image-to-resize.jpg', $img);
+        $this->assertEquals('https://img.resized.co/key/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmV4YW1wbGUuY29tXFxcL3NvbWUtaW1hZ2UtdG8tcmVzaXplLmpwZ1wiLFwid2lkdGhcIjpudWxsLFwiaGVpZ2h0XCI6bnVsbCxcImRlZmF1bHRcIjpcImh0dHA6XFxcL1xcXC93d3cuZXhhbXBsZS5jb21cXFwvbm8taW1hZ2UuanBnXCIsXCJvcHRpb25zXCI6W119IiwiaGFzaCI6IjgyMzAzZDljNmVmN2E3MmIyYjliMzZmNjA5MjBlODZiMzI0YzFhNjYifQ==/some-image-to-resize.jpg', $img);
     }
 
     /**
@@ -193,7 +193,40 @@ abstract class ResizedServiceProviderTest extends TestCase
         Resized::setDefaultImage('http://www.example.com/no-image.jpg');
         $img = Resized::process('http://www.example.com/some-image-to-resize.jpg');
 
-        $this->assertEquals('https://img.resized.co/key/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmV4YW1wbGUuY29tXFxcL3NvbWUtaW1hZ2UtdG8tcmVzaXplLmpwZ1wiLFwid2lkdGhcIjpcIlwiLFwiaGVpZ2h0XCI6XCJcIixcImRlZmF1bHRcIjpcImh0dHA6XFxcL1xcXC93d3cuZXhhbXBsZS5jb21cXFwvbm8taW1hZ2UuanBnXCIsXCJvcHRpb25zXCI6W119IiwiaGFzaCI6IjMzMGZhODdhOWFmNGJmNTZiOWI2ODQ5NjAxNTZmMmYwNWRiY2Y0ZTUifQ==/some-image-to-resize.jpg', $img);
+        $this->assertEquals('https://img.resized.co/key/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmV4YW1wbGUuY29tXFxcL3NvbWUtaW1hZ2UtdG8tcmVzaXplLmpwZ1wiLFwid2lkdGhcIjpudWxsLFwiaGVpZ2h0XCI6bnVsbCxcImRlZmF1bHRcIjpcImh0dHA6XFxcL1xcXC93d3cuZXhhbXBsZS5jb21cXFwvbm8taW1hZ2UuanBnXCIsXCJvcHRpb25zXCI6W119IiwiaGFzaCI6IjgyMzAzZDljNmVmN2E3MmIyYjliMzZmNjA5MjBlODZiMzI0YzFhNjYifQ==/some-image-to-resize.jpg', $img);
+    }
+
+    /**
+     * @throws JsonException
+     */
+    public function testWithOptions(): void
+    {
+        $app = $this->setupApplication();
+        $this->setupServiceProvider($app);
+        Resized::setFacadeApplication($app);
+
+        Resized::setHost('https://img.resized.co');
+        Resized::setDefaultImage('http://www.example.com/no-image.jpg');
+        $img = Resized::process('http://www.example.com/some-image-to-resize.jpg', '', '500', 'A nice image name', ['quality' => 100]);
+
+        $this->assertEquals('https://img.resized.co/key/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmV4YW1wbGUuY29tXFxcL3NvbWUtaW1hZ2UtdG8tcmVzaXplLmpwZ1wiLFwid2lkdGhcIjpcIlwiLFwiaGVpZ2h0XCI6XCI1MDBcIixcImRlZmF1bHRcIjpcImh0dHA6XFxcL1xcXC93d3cuZXhhbXBsZS5jb21cXFwvbm8taW1hZ2UuanBnXCIsXCJvcHRpb25zXCI6e1wicXVhbGl0eVwiOjEwMH19IiwiaGFzaCI6IjcyNmI5ZWIxYTBmNjJmNDQwOGVkOTIyNDM3M2MxMGM1ZmU0NDAzZGIifQ==/a-nice-image-name.jpg', $img);
+    }
+
+    /**
+     * @throws JsonException
+     */
+    public function testSetMaxSlugLength(): void
+    {
+        $app = $this->setupApplication();
+        $this->setupServiceProvider($app);
+        Resized::setFacadeApplication($app);
+
+        Resized::setHost('https://img.resized.co');
+        Resized::setDefaultImage('http://www.example.com/no-image.jpg');
+        Resized::setMaxSlugLength(10);
+        $img = Resized::process('http://www.example.com/some-image-to-resize.jpg', '100', '100');
+
+        $this->assertEquals('https://img.resized.co/key/eyJkYXRhIjoie1widXJsXCI6XCJodHRwOlxcXC9cXFwvd3d3LmV4YW1wbGUuY29tXFxcL3NvbWUtaW1hZ2UtdG8tcmVzaXplLmpwZ1wiLFwid2lkdGhcIjpcIjEwMFwiLFwiaGVpZ2h0XCI6XCIxMDBcIixcImRlZmF1bHRcIjpcImh0dHA6XFxcL1xcXC93d3cuZXhhbXBsZS5jb21cXFwvbm8taW1hZ2UuanBnXCIsXCJvcHRpb25zXCI6W119IiwiaGFzaCI6IjJjZDZjZjNkNjk2MDc0YjUyZmRjYWZmZWUwMjY5YmIxMTA0OTZjY2QifQ==/some-i.jpg', $img);
     }
 
     /**

@@ -32,7 +32,7 @@ class LocalResized extends Resized
         return $this->enabled;
     }
 
-    public function process(string $url, string $width = '', string $height = '', string $title = '', array $options = []): string
+    public function process(?string $url, int|string|null $width = null, int|string|null $height = null, ?string $title = '', array $options = []): string
     {
         if (! $this->isFullUrl($url) || ! $this->isEnabled()) {
             return $url;
@@ -41,7 +41,7 @@ class LocalResized extends Resized
         return parent::process($url, $width, $height, $title, $options);
     }
 
-    protected function isFullUrl(string $url): bool
+    protected function isFullUrl(?string $url): bool
     {
         $path = parse_url($url);
 

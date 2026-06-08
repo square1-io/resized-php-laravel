@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [3.1.0] - 2026-06-08
+
+### Added
+
+- Added support for `square1/resized` version `^2.0` (2.0.1 and above).
+- Added support for `setMaxSlugLength(int $length)` to control the maximum character length of the filename slug appended to generated URLs.
+- Updated `LocalResized::process()` to accept `int|string|null` for width and height parameters and `?string` for the URL, matching the upstream `square1/resized` 2.0.x API.
+
+### Changed
+
+- Default values for `width` and `height` in `process()` changed from empty string to `null`, reflecting the upstream 2.0.x API. Existing callers that pass explicit empty strings are unaffected.
+
 ## [3.0.0] - 2026-06-04
 
 ### Changed
